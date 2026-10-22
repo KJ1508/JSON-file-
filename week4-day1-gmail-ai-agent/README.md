@@ -9,7 +9,7 @@ Import template for the supplied Gmail AI Agent assignment.
    If URL import is unavailable, download the JSON and use **Import from File**.
 2. Open **Set your email** and replace `YOUR_EMAIL_ADDRESS` with your own Gmail address.
 3. In **Get 5 unread emails** and **Send one summary email**, select your existing Gmail credential. In **OpenAI Chat Model**, select your existing OpenAI credential.
-4. Ensure your account has at least five unread messages, then click **Execute workflow** once. This reads up to five unread messages and sends ONE digest to the address you configured.
+4. To test without sending, open **Send one summary email** and choose **Execute previous nodes**. To send a digest to your configured address, click **Execute workflow** once. This reads up to five unread messages and sends ONE digest.
 5. Check the received email and the execution results. Capture the workflow canvas and received digest.
 
 ## Flow
@@ -32,8 +32,15 @@ OpenAI Chat Model connects to the AI Agent's model input.
 
 JSON syntax, node names and connection targets were checked during creation.
 Node settings were prepared using official n8n source definitions and the existing exported OpenAI model configuration.
-**Not imported or executed in the user's n8n instance yet.** Select credentials, run the workflow and verify the received digest before submitting.
-Model access, OAuth permissions, unread message count and n8n-version compatibility still require that live check.
+Live execution verified on 22 October 2026 in the existing n8n instance:
+- Gmail retrieved 5 unread messages with the existing OAuth credential.
+- The configured AI model returned 5 summaries.
+- The formatting node enforced one line and at most 20 words per summary.
+- Aggregate produced one item containing 5 summaries.
+- After explicit user approval, the Gmail send node sent ONE plain-text digest with subject `Your 5 unread emails`.
+- The exact returned Gmail message was read back and verified in INBOX and SENT. It contained 5 summaries, each at most 20 words, separated by blank lines.
+
+No new credentials were required. Mailbox content, personal addresses and credential identifiers are intentionally excluded from this public repository.
 
 ## Assignment submission
 
@@ -44,3 +51,15 @@ After a successful real execution:
 - Record the workflow run and post the video in the course community yourself.
 
 The Voice AI Agent attachment is a separate workflow and was not needed to build this Gmail assignment template.
+
+## Short screen-recording demo
+
+1. Open the existing saved workflow and show the connected nodes.
+2. Explain: read 5 unread emails, generate one short summary per email, combine them, send one digest to yourself.
+3. Show Gmail Get Many: unread filter and limit 5. Do not open credential editors or show keys.
+4. If demonstrating a new live run, click Execute workflow ONCE; this sends another digest. Otherwise show the already successful execution.
+5. Show the 5 AI outputs, the single aggregated item and the successful send node.
+6. Open the received digest in Gmail and show the 5 separated summaries. Hide unrelated private emails while recording.
+7. Finish by showing this repository folder and its JSON and README files.
+
+The screen recording and course/community submission remain for the learner to complete.
