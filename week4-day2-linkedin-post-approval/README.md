@@ -43,7 +43,9 @@ Credentials remain in n8n's credential store. This public export intentionally r
 - Execution #42 completed successfully after Approve and appended the first Approved row.
 - A transient Reviewer connection error in execution #43 was recovered using Retry with currently saved workflow from the failed node. Retry execution #44 completed successfully after the learner approved the second topic, appending a second Approved row.
 - Google Sheet readback confirms two data rows, both Approved, with their original topics and reviewed posts.
-- The rejection no-write path is configured but remains unverified: both test emails were approved. One further rejection test is pending authorization.
+- Execution #45 completed successfully after Reject was clicked on the final test approval email.
+- Sheet readback after rejection confirmed exactly the same two Approved data rows; the rejected topic was absent. The rejection no-write path is verified.
+- Approval email delivery, waiting/resume, approved append and rejected no-write behavior have now all been tested. The one-day timeout is configured but was not duration-tested.
 - Test form URLs accept a submission only while n8n is listening. Start a new test execution before reusing the Test URL; repeated submissions after a completed run may show a submission/connection error.
 
 ## Screen recording and submission
