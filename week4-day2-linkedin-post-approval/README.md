@@ -39,8 +39,12 @@ Credentials remain in n8n's credential store. This public export intentionally r
 - Writer Agent and Reviewer Agent both executed successfully.
 - Prepare approval validated the reviewed post: 125 words and three hashtags.
 - Confirmed approval type has both Approve and Reject buttons, with a one-day wait limit.
-- Google Sheet currently contains headers only.
-- Email sending, the live wait/resume behavior, approved row append and rejected no-write execution remain pending explicit permission to send test approval emails. This is not yet a verified end-to-end run.
+- Live approval email delivery and wait/resume were verified.
+- Execution #42 completed successfully after Approve and appended the first Approved row.
+- A transient Reviewer connection error in execution #43 was recovered using Retry with currently saved workflow from the failed node. Retry execution #44 completed successfully after the learner approved the second topic, appending a second Approved row.
+- Google Sheet readback confirms two data rows, both Approved, with their original topics and reviewed posts.
+- The rejection no-write path is configured but remains unverified: both test emails were approved. One further rejection test is pending authorization.
+- Test form URLs accept a submission only while n8n is listening. Start a new test execution before reusing the Test URL; repeated submissions after a completed run may show a submission/connection error.
 
 ## Screen recording and submission
 After live approval and rejection tests pass:
