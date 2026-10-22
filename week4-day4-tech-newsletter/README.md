@@ -25,7 +25,7 @@ then run `python news_crew.py`. MODEL defaults to `openai/gpt-4o-mini`.
 4. Third numbered story with actual publication date and source URL
 5. Why it matters: one takeaway
 
-A guardrail checks line count, heading, numbering and takeaway.
+The Writer returns structured Pydantic fields. The application renders exactly five lines and checks the heading, numbering and takeaway. Source URLs absent from the Researcher output are rejected before saving.
 Search results remain evidence and are not trusted instructions.
 The current date is generated at each run in Asia/Kolkata.
 Older stories must keep their actual dates; search failure must be disclosed.
@@ -56,3 +56,4 @@ Title: SE-AI-B12-1 Wk4 Day4 Assignment Completed - Tech Newsletter Crew
 Requirements source: Week4_Day4_Tech_Newsletter_Crew.pdf supplied by the learner.
 Official tool reference: https://docs.crewai.com/en/tools/search-research/serperdevtool
 The supplied Skool classroom links were inaccessible through the available web reader.
+
