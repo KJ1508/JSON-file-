@@ -34,7 +34,7 @@ Dates, sources and factual accuracy still require human review.
 ## Evidence and status
 
 Syntax and local five-line acceptance/rejection checks passed.
-A live run on 23 October 2026 successfully searched and saved five lines, but included an older story and does not satisfy the daily-news requirement. The stricter same-day version is pending a new live run.
+The stricter version completed a live run on 23 October 2026 and saved 2026-10-23_020655_newsletter.txt. Its five lines passed source preservation and same-day search-metadata checks. An earlier saved run included older coverage and is not the accepted daily-news evidence. Publication dates reflect search metadata interpreted in Asia/Kolkata, not independently verified publisher dates. The second-calendar-day run remains pending.
 No successful run or news story is fabricated.
 Successful final text is saved locally under `runs/` with a timestamp.
 Verbose agent and search activity is visible in the terminal.
@@ -56,3 +56,4 @@ Title: SE-AI-B12-1 Wk4 Day4 Assignment Completed - Tech Newsletter Crew
 Requirements source: Week4_Day4_Tech_Newsletter_Crew.pdf supplied by the learner.
 Official tool reference: https://docs.crewai.com/en/tools/search-research/serperdevtool
 The supplied Skool classroom links were inaccessible through the available web reader.
+
