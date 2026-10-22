@@ -48,7 +48,7 @@ The backstory targets first-time independent visitors with limited time. The exp
 - Blank-city and missing-key CLI checks return clear errors without making an API call.
 - CrewAI 1.15.28 is installed in an isolated environment. Real framework construction of one Agent, one Task, one Crew and the guardrail passed without a model request.
 - Windows PowerShell launcher syntax was checked.
-- Live model calls and the three-city comparison are pending a privately configured OpenAI API key. No live output or screenshot is fabricated.
+- Live OpenAI runs completed successfully for Jaipur, Chennai and Paris on 23 October 2026. All three saved verbose logs contain Crew Execution Completed and a final output, with no authentication or travel-planning failure. The learner also captured the Paris completion screenshot.
 
 ## Record your demo
 
