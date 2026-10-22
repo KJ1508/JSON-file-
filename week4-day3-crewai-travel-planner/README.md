@@ -17,7 +17,7 @@ python -m venv .venv
 
 The application reads `OPENAI_API_KEY` and `MODEL` from environment variables. Do not put a real key into the Python code, GitHub, screenshots or chat.
 
-On Windows, run `Start-Travel-Planner.cmd` or `powershell -NoProfile -File .\run.ps1`. The launcher asks for the key with hidden input if it is not already set, makes it available only to this process and its Python child, and restores the previous value afterward. It does not save the entered key to a file.
+On Windows, double-click `Start-Travel-Planner.cmd`. It asks for the key with hidden input if it is not already set and makes it available only to the running process and its Python child. It does not save the entered key to a file or change PowerShell execution policy. An optional `run.ps1` is also included for environments that already permit local PowerShell scripts.
 
 If the environment variables are already set:
 
