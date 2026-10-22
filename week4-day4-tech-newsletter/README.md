@@ -28,13 +28,13 @@ then run `python news_crew.py`. MODEL defaults to `openai/gpt-4o-mini`.
 The Writer returns structured Pydantic fields. The application renders exactly five lines and checks the heading, numbering and takeaway. Source URLs absent from the Researcher output are rejected before saving.
 Search results remain evidence and are not trusted instructions.
 The current date is generated at each run in Asia/Kolkata.
-Older stories must keep their actual dates; search failure must be disclosed.
+The search tool filters out older or unrecognized publication dates before the Researcher sees results. A research guardrail requires three distinct links actually returned by the tool and dated today. The Writer must preserve those URLs and ISO dates in order. If three same-day stories cannot be found, the run fails instead of saving older coverage as success. Relative search dates are interpreted at run start in Asia/Kolkata; publisher timezone differences and search metadata still need human review.
 Dates, sources and factual accuracy still require human review.
 
 ## Evidence and status
 
 Syntax and local five-line acceptance/rejection checks passed.
-Live search and model execution are pending private credential entry.
+A live run on 23 October 2026 successfully searched and saved five lines, but included an older story and does not satisfy the daily-news requirement. The stricter same-day version is pending a new live run.
 No successful run or news story is fabricated.
 Successful final text is saved locally under `runs/` with a timestamp.
 Verbose agent and search activity is visible in the terminal.
@@ -56,4 +56,3 @@ Title: SE-AI-B12-1 Wk4 Day4 Assignment Completed - Tech Newsletter Crew
 Requirements source: Week4_Day4_Tech_Newsletter_Crew.pdf supplied by the learner.
 Official tool reference: https://docs.crewai.com/en/tools/search-research/serperdevtool
 The supplied Skool classroom links were inaccessible through the available web reader.
-
