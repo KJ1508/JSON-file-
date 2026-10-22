@@ -5,6 +5,36 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from pydantic import BaseModel, field_validator
+
+
+class Newsletter(BaseModel):
+    story_1: str
+    story_2: str
+    story_3: str
+    why_it_matters: str
+
+    @field_validator("story_1", "story_2", "story_3", "why_it_matters")
+    @classmethod
+    def single_line(cls, value):
+        value = " ".join(value.split())
+        if not value:
+            raise ValueError("Each newsletter field must contain text")
+        return value
+
+    def render(self):
+        return "\n".join(["Tech in 5 lines", "1. " + self.story_1,
+                          "2. " + self.story_2, "3. " + self.story_3,
+                          "Why it matters: " + self.why_it_matters])
+
+
+def check_sources(crew, newsletter):
+    research = crew.tasks[0].output.raw
+    stories = [newsletter.story_1, newsletter.story_2, newsletter.story_3]
+    for story in stories:
+        urls = re.findall(r"https?://[^\s<>]+", story)
+        if not urls or any(url.rstrip('.,;)') not in research for url in urls):
+            raise ValueError("Writer introduced a source absent from the research")
 
 
 def validate_newsletter(result):
@@ -44,10 +74,9 @@ def build_crew():
         agent=researcher,
     )
     write = Task(
-        description="Use only the research provided in context. Produce exactly five physical lines without blank lines or markdown fences. Line 1: Tech in 5 lines. Lines 2-4: numbered 1., 2., 3., each with one story, its actual publication date and its source URL. Line 5: Why it matters: followed by one concise takeaway. Keep each story on a single line. Preserve any date limitations; never present older stories as today's. If research failed or three sourced stories are unavailable, disclose that limitation instead of claiming a successful newsletter.",
-        expected_output="Exactly 5 lines: Tech in 5 lines\n1. Story one, publication date and source URL\n2. Story two, publication date and source URL\n3. Story three, publication date and source URL\nWhy it matters: One concise takeaway.",
-        agent=writer, context=[find], guardrail=validate_newsletter,
-        guardrail_max_retries=2,
+        description="Use only the research provided in context. Fill the Newsletter schema: story_1, story_2, story_3 and why_it_matters. Each story is a concise single-line sentence including its actual publication date and source URL, without numbering or headings. The application renders these fields as exactly five lines: heading, three numbered stories, and a takeaway. Preserve date limitations; never present older stories as today's. If search failed or evidence is missing, disclose that explicitly in the relevant fields instead of inventing news.",
+        expected_output="A Newsletter object with three concise story fields containing dates and source URLs, plus one why_it_matters takeaway. It will be rendered as exactly five newsletter lines.",
+        agent=writer, context=[find], output_pydantic=Newsletter,
     )
     return Crew(agents=[researcher, writer], tasks=[find, write],
                 process=Process.sequential, verbose=True)
@@ -60,8 +89,13 @@ def main():
         return 2
     now = datetime.now(ZoneInfo("Asia/Kolkata"))
     try:
-        result = build_crew().kickoff(inputs={"today": now.date().isoformat(), "timezone": "Asia/Kolkata"})
-        valid, newsletter = validate_newsletter(result)
+        crew = build_crew()
+        result = crew.kickoff(inputs={"today": now.date().isoformat(), "timezone": "Asia/Kolkata"})
+        structured = result.pydantic or Newsletter.model_validate_json(result.raw)
+        check_sources(crew, structured)
+        newsletter = structured.render()
+        from types import SimpleNamespace
+        valid, newsletter = validate_newsletter(SimpleNamespace(raw=newsletter))
         if not valid:
             raise ValueError("Newsletter format validation failed")
         output_dir = Path(__file__).resolve().parent / "runs"
@@ -72,9 +106,10 @@ def main():
         print("\nSaved newsletter: " + str(destination))
         return 0
     except Exception as error:
-        print("Newsletter failed (" + type(error).__name__ + "). Check credentials, search access and model availability.", file=sys.stderr)
+        print("Newsletter failed (" + type(error).__name__ + "). Review the preceding agent or search error; this run was not saved as a success.", file=sys.stderr)
         return 1
 
 
 if __name__ == "__main__":
     sys.exit(main())
+
