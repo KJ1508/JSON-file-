@@ -13,7 +13,7 @@ All application code is in `app.py`.
 - [x] Streamlit question input, progress updates, both answers and record download.
 - [x] API keys read only from environment variables.
 - [x] GitHub source and setup instructions.
-- [ ] Verify a complete live run with the learner's privately entered credentials.
+- [x] Verify a complete live run with the learner's privately entered credentials.
 - [ ] Capture the real app demo and submit the community/WhatsApp links.
 
 The supplied PDF specifies these three roles. The video's single-agent RAG example is supporting course material; this implementation follows the multi-agent buildathon specification. The first Assistant answers directly, as required, rather than using a retrieval tool. `data/` holds generated support records, not a fabricated knowledge base.
@@ -62,7 +62,7 @@ Support questions and answers are saved locally. Generated records and credentia
 - Actual Entry save-tool integration with labeled test fixtures: original query and both answers match the UTF-8 file exactly.
 - Input checks and constrained generated file paths.
 - Streamlit AppTest: initial page, blank-question feedback and both-answer display using labeled fixtures.
-- Live OpenAI/Serper execution is pending private key entry; no live success is claimed yet.
+- Live OpenAI/Serper run verified on 23 October 2026 for the Gmail password-reset question. The UI showed both answers, Google support source links, and Entry Agent save confirmation. The local record answers_20261023_191622_1f867230.txt contains the query and both answer sections. Demo recording and learner submission remain pending.
 
 ## Demo and submission
 
@@ -79,3 +79,4 @@ Resources:
 - https://docs.crewai.com/en/concepts/tools
 
 Community/WhatsApp submission and recording remain with the learner.
+
