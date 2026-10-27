@@ -16,9 +16,10 @@ Use Python 3.12, create `.venv`, and install `requirements.txt`. The launchers p
 
 ## Validation and submission
 
-A live DuckDuckGo search for Chennai returned news results. An offline AutoGen fixture test verified tool execution, reflection, three-line validation, source checking, saving and client cleanup. Live OpenAI execution and the two-city comparison are pending. No fixture is presented as a live result. After real tests, capture a screenshot showing the tool call and three-line reply, and record the agent running with key entry outside the recording. Share the source link and video as required by the course.
+A live DuckDuckGo search for Chennai returned news results. An offline AutoGen fixture test verified tool execution, reflection, three-line validation, source checking, saving and client cleanup. Live OpenAI and DuckDuckGo runs completed on 27 October 2026 for Chennai and Paris. Both produced and saved three lines with different source URLs. The selected Chennai article was dated 7 October and the Paris article 24 October; they are historical news results, not proof of today's weather. The search time filter was also checked and still returned older results. No fixture is presented as a live result. After real tests, capture a screenshot showing the tool call and three-line reply, and record the agent running with key entry outside the recording. Share the source link and video as required by the course.
 
 Suggested title after live verification: `SE-AI-B12-1 Wk5 Day2 Assignment Completed - AutoGen Weather News Agent`
 
 Course reference: https://github.com/Thirumurugan240/AutoGen_Framework
 AutoGen tools: https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/tutorial/agents.html
+
