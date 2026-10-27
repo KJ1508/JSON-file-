@@ -2,6 +2,8 @@
 import os
 import re
 import sys
+import importlib.util
+from importlib.metadata import distribution
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -95,7 +97,18 @@ def validate_newsletter(result):
 
 def build_crew(now=None):
     from crewai import Agent, Crew, LLM, Process, Task
-    from crewai_tools import SerperDevTool
+    # Load the installed Serper module without importing unrelated optional RAG
+    # packages that are eagerly imported by crewai_tools' package initializer.
+    tool_path = distribution("crewai-tools").locate_file(
+        "crewai_tools/tools/serper_dev_tool/serper_dev_tool.py"
+    )
+    spec = importlib.util.spec_from_file_location("newsletter_serper_tool", tool_path)
+    if spec is None or spec.loader is None:
+        raise ImportError("Installed Serper search tool could not be loaded")
+    serper_module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = serper_module
+    spec.loader.exec_module(serper_module)
+    SerperDevTool = serper_module.SerperDevTool
 
     now = now or datetime.now(ZoneInfo("Asia/Kolkata"))
 
@@ -183,3 +196,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
