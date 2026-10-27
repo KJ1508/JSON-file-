@@ -94,8 +94,9 @@ if __name__ == "__main__":
                 st.caption("Routed to: " + result["department"])
                 st.markdown(result["answer"])
                 st.session_state.support_history.append(result)
-            except (ValueError, RuntimeError) as error:
-                st.error(str(error))
+            except (ValueError, RuntimeError):
+                st.error("The team could not finish. Check your OpenAI key and connection, or try a more specific question.")
             except Exception:
                 st.error("The team could not finish. Check your API access and connection, then try again.")
     st.caption("Demo guidance only. This chatbot cannot access company accounts or submit requests.")
+
