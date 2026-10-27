@@ -34,7 +34,7 @@ Dates, sources and factual accuracy still require human review.
 ## Evidence and status
 
 Syntax and local five-line acceptance/rejection checks passed.
-The stricter version completed a live run on 23 October 2026 and saved 2026-10-23_020655_newsletter.txt. Its five lines passed source preservation and same-day search-metadata checks. An earlier saved run included older coverage and is not the accepted daily-news evidence. Publication dates reflect search metadata interpreted in Asia/Kolkata, not independently verified publisher dates. The second-calendar-day run remains pending.
+The stricter version completed a live run on 23 October 2026 and saved 2026-10-23_020655_newsletter.txt. Its five lines passed source preservation and same-day search-metadata checks. An earlier saved run included older coverage and is not the accepted daily-news evidence. Publication dates reflect search metadata interpreted in Asia/Kolkata, not independently verified publisher dates. A second live run on 27 October 2026 saved 2026-10-27_192553_newsletter.txt. Both outputs have five lines; their three story URLs are all different. The test dates reflect the local run dates.
 No successful run or news story is fabricated.
 Successful final text is saved locally under `runs/` with a timestamp.
 Verbose agent and search activity is visible in the terminal.
