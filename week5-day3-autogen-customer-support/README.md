@@ -18,6 +18,7 @@ Create a Python 3.12 virtual environment, install `requirements.txt`, set `OPENA
 
 ## Status
 
-Offline fixture tests exercised the real AutoGen SelectorGroupChat through all five manager routes and specialist replies, rejected ambiguous route labels, confirmed client cleanup and tested Streamlit chat rendering. Full live OpenAI routing and the demonstration recording are pending private credential entry. The assignment's written PDF has not been provided; the user-provided video transcript is the current requirements source.
+Offline fixture tests exercised the real AutoGen SelectorGroupChat through all five manager routes and specialist replies, rejected ambiguous route labels, confirmed client cleanup and tested Streamlit chat rendering. Live OpenAI tests routed a Wi-Fi question to IT and a leave request to HR, and both specialists returned answers. Admin, Accounts and Complaints were tested using offline fixtures; live tests for those three were not performed. Demo recording and submission remain pending. The assignment's written PDF has not been provided; the user-provided video transcript is the current requirements source.
 
 Course resource: https://github.com/Thirumurugan240/AutoGen_Framework
+
