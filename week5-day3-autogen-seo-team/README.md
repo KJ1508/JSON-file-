@@ -1,4 +1,6 @@
-# Week 5 Day 3 - AutoGen SEO Team
+# Video example - AutoGen SEO Team
+
+The learner provided the video ending: the actual Week 5 Day 3 assignment is the AutoGen Customer Support Chatbot (manager plus IT, Admin, HR, Accounts and Complaints agents). This SEO team is the video demonstration, not the assignment submission.
 
 Four AutoGen AssistantAgents run in a `RoundRobinGroupChat` with `max_turns=4`: researcher, content writer, SEO optimizer and reviewer. The Streamlit UI accepts a topic, audience and content type, displays each stage, and offers a final-content download. The workflow runs sequentially: asyncio is used to call the async team, not to claim that the four dependent agents work in parallel.
 
@@ -19,3 +21,4 @@ Create a Python 3.12 virtual environment and install `requirements.txt`. Private
 Built from the learner's video transcript and the linked course example. A separate Day 3 assignment PDF was not provided; check its requirements when available. An offline fixture test exercised the actual four-agent round robin, search tool call, agent handoffs, client cleanup, Streamlit input validation and final output. A live DuckDuckGo search returned three links. Full live OpenAI team execution is pending private key entry. Do not present test fixtures as live output.
 
 Course example: https://github.com/Thirumurugan240/AutoGen_Framework/blob/main/seo_agent.py
+
