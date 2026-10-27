@@ -21,9 +21,10 @@ The client is closed in a `finally` block, including when a request fails. A for
 
 ## Status and submission
 
-Live OpenAI execution is pending private key entry. Do not present fixture output as a real run. Capture a real terminal screenshot and record the script running with key entry outside the recording. Share the source link as required by the course.
+A live OpenAI run completed on 27 October 2026. The terminal showed the HR assistant response and confirmed exactly five numbered lines; the saved file was checked locally. Do not present fixture output as a real run. Capture a real terminal screenshot and record the script running with key entry outside the recording. Share the source link as required by the course.
 
 Suggested title: `SE-AI-B12-1 Wk5 Day1 Assignment Completed - AutoGen HR Assistant`
 
 Course reference: https://github.com/Thirumurugan240/AutoGen_Framework
 Official reference: https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/tutorial/agents.html
+
